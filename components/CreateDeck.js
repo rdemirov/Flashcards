@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View,FlatList } from 'react-native';
 
-export default class DeckListItem extends Component {
+export default class CreateDeck extends Component {
     render() {
         const {deck} = this.props;
         return (
             <View style={styles.deck}>
-                <Text style={styles.deckTitle}>{deck.title}</Text>
-                <Text style={styles.cardCount}>{`Cards : ${deck.questions.length}`}</Text>
+                <Text >CreateDeck</Text>
             </View>
         )
     }
