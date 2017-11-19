@@ -19,7 +19,7 @@ export default class DeckView extends Component {
                 <TouchableHighlight onPress={()=>(this.handlePress('AddCard'))}>
                     <Text>Add card</Text>
                 </TouchableHighlight>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={()=>(this.handlePress('Quiz'))}>
                     <Text>Start quiz</Text>
                 </TouchableHighlight>
             </View>
