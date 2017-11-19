@@ -4,6 +4,8 @@ import {TabNavigator,StackNavigator} from 'react-navigation';
 import HomeScreen from './components/HomeScreen'
 import CreateDeck from './components/CreateDeck'
 import DeckView from './components/DeckView'
+import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 
 const Tabs = TabNavigator({
   Home: {
@@ -32,6 +34,18 @@ const MainNavigator = StackNavigator({
     screen:DeckView,
     navigationOptions: ({navigation}) => ({
       title: navigation.state.params.title,
+    })
+  },
+  AddCard:{
+    screen:AddCard,
+    navigationOptions: ({navigation}) => ({
+      title: 'Add Card',
+    })
+  },
+  Quiz:{
+    screen:Quiz,
+    navigationOptions: ({navigation}) => ({
+      title: 'Quiz',
     })
   }
 })

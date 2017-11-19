@@ -19,10 +19,10 @@ export default class DeckListItem extends Component {
     render() {
         const {deck, navigation} = this.props;
         return (
-            <TouchableOpacity  onPress={this.handleNavigation} >
+            <TouchableOpacity style={styles.deck} onPress={this.handleNavigation} >
                 <View>
                     <Text style={styles.deckTitle}>{deck.title}</Text>
-                    <Text style={styles.cardCount}>{`Cards : ${deck.questions.length}`}</Text>
+                    <Text style={styles.cardCount}>{`${deck.questions.length} Cards`}</Text>
                 </View>
                 </TouchableOpacity>
 
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     deck: {
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height:150
     },
     deckTitle: {
         fontSize: 30,

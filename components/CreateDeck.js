@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
     btn: {
         borderWidth: 1,
         padding: 25,
-        borderColor: 'black'
+        borderColor: 'black',
+        width:100,
+        height:30,
+        alignItems:'center',
+        justifyContent: 'center'
     }
   });
