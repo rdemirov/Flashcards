@@ -7,8 +7,8 @@ export default class DeckView extends Component {
         this.handlePress = this.handlePress.bind(this)
     }
 
-    handlePress(component) {
-        this.props.navigation.navigate(component);
+    handlePress(component,params) {
+        this.props.navigation.navigate(component,params);
     }
     render() {
         const {deck,navigation} = this.props;
@@ -19,7 +19,7 @@ export default class DeckView extends Component {
                 <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard'))}>
                     <Text>Add card</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz'))}>
+                <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz',{questions:this.props.navigation.state.params.deck.questions}))}>
                     <Text style={styles.buttonText}>Start quiz</Text>
                 </TouchableHighlight>
             </View>

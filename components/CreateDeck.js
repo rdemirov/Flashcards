@@ -5,9 +5,9 @@ export default class CreateDeck extends Component {
     render() {
         const {deck} = this.props;
         return (
-            <View>
+            <View style={styles.container}>
                 <Text >What is the title of your new deck?</Text>
-                <TextInput />
+                <TextInput style={styles.inputField}/>
                 <TouchableHighlight
                 underlayColor="white"
                  style={styles.btn}>
@@ -19,6 +19,15 @@ export default class CreateDeck extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    inputField:{
+        borderWidth: 1,
+        borderColor: 'black',
+        width:250
+    },
     btn: {
         borderWidth: 1,
         borderColor: 'black',
