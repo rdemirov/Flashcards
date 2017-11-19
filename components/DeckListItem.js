@@ -19,8 +19,8 @@ export default class DeckListItem extends Component {
     render() {
         const {deck, navigation} = this.props;
         return (
-            <TouchableOpacity style={styles.deck} onPress={this.handleNavigation} >
-                <View>
+            <TouchableOpacity onPress={this.handleNavigation} >
+                <View  style={styles.deck} >
                     <Text style={styles.deckTitle}>{deck.title}</Text>
                     <Text style={styles.cardCount}>{`${deck.questions.length} Cards`}</Text>
                 </View>

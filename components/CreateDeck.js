@@ -11,7 +11,7 @@ export default class CreateDeck extends Component {
                 <TouchableHighlight
                 underlayColor="white"
                  style={styles.btn}>
-                   <Text>Submit</Text> 
+                   <Text style={styles.buttonText}>Submit</Text> 
                 </TouchableHighlight>
             </View>
         )
@@ -21,11 +21,16 @@ export default class CreateDeck extends Component {
 const styles = StyleSheet.create({
     btn: {
         borderWidth: 1,
-        padding: 25,
         borderColor: 'black',
-        width:100,
-        height:30,
+        backgroundColor:'black',
+        height:60,
+        width:200,
         alignItems:'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius:8
+    },
+    buttonText: {
+        fontSize:20,
+        color:'white'
     }
   });
