@@ -42,7 +42,7 @@ export default class HomeScreen extends Component {
        data = {decksArray}
        extraData = {this.state}
        keyExtractor={(item,index)=>(index)}
-       renderItem={({item}) =><DeckListItem deck={this.state[item]}/>}
+       renderItem={({item}) =><DeckListItem deck={this.state[item]}{...this.props}/>}
 
        />
     );
