@@ -1,7 +1,6 @@
 import actionTypes from './actionTypes'
 import {fetchDecks,fetchDeck,saveDeckTitle,addCardToDeck} from '../utils/api'
 
-
 const getDecks = (decks) => ({
 	type: actionTypes.GET_DECKS,
 	decks
@@ -10,4 +9,34 @@ const getDecks = (decks) => ({
 export const getDecksAsync = (params) => dispatch => (
 	fetchDecks(params)
 		.then(decks => dispatch(getDecks(decks)))
+);
+
+const getDeck = (deck) => ({
+	type: actionTypes.GET_DECK,
+	deck
+});
+
+export const getDeckAsync = (params) => dispatch => (
+	fetchDeck(params)
+		.then(deck => dispatch(getDeck(deck)))
+);
+
+const storeDeckTitle = (result) => ({
+	type: actionTypes.SAVE_DECK_TITLE,
+	result
+});
+
+export const saveDeckTitleAsync = (params) => dispatch => (
+	saveDeckTitle(params)
+		.then(result => dispatch(storeDeckTitle(result)))
+);
+
+const addNewCard = (result) => ({
+	type: actionTypes.ADD_CARD_TO_DECK,
+	result
+});
+
+export const addCardToDeckAsync = (params) => dispatch => (
+	addCardToDeck(params)
+		.then(result => dispatch(addNewCard(result)))
 );
