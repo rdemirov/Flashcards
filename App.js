@@ -6,6 +6,10 @@ import CreateDeck from './components/CreateDeck'
 import DeckView from './components/DeckView'
 import AddCard from './components/AddCard'
 import Quiz from './components/Quiz'
+import {createStore, applyMiddleware, compose} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducers'
+import thunk from 'redux-thunk';
 
 const Tabs = TabNavigator({
   Home: {
@@ -53,8 +57,12 @@ const MainNavigator = StackNavigator({
 export default class App extends React.Component {
   
   render() {
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
     return (
+      <Provider store={store}>
        <MainNavigator />
+       </Provider>
     );
   }
 }

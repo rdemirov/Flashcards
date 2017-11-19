@@ -1,48 +1,24 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View,FlatList } from 'react-native';
-
+import {connect} from 'react-redux'
+import {getDecksAsync} from '../actions'
 import DeckListItem from './DeckListItem'
 
-export default class HomeScreen extends Component {
-    state = {
-        React: {
-          title: 'React',
-          questions: [
-            {
-              question: 'What is React?',
-              answer: 'A library for managing user interfaces'
-            },
-            {
-              question: 'Where do you make Ajax requests in React?',
-              answer: 'The componentDidMount lifecycle event'
-            },
-            {
-              question: 'Where do you make Ajax requests in React?',
-              answer: 'The componentDidMount lifecycle event'
-            }
-          ]
-        },
-        JavaScript: {
-          title: 'JavaScript',
-          questions: [
-            {
-              question: 'What is a closure?',
-              answer: 'The combination of a function and the lexical environment within which that function was declared.'
-            }
-          ]
-        }
-      }
+class HomeScreen extends Component {
+
+  componentDidMount() {
+   this.props.getDecksAsync();
+  }
 
     render() {
-         let decksObject = this.state;
+         let {decksObject} = this.props;
     let decksArray = Object.keys(decksObject)
     return (
        <FlatList
        contentContainerStyle={styles.container}
        data = {decksArray}
-       extraData = {this.state}
        keyExtractor={(item,index)=>(index)}
-       renderItem={({item}) =><DeckListItem deck={this.state[item]}{...this.props}/>}
+       renderItem={({item}) =><DeckListItem deck={decksObject[item]}{...this.props}/>}
 
        />
     );
@@ -65,3 +41,11 @@ const styles = StyleSheet.create({
         color:'gray'
     }
   });
+
+const mapStateToProps= (state,ownProps) => ({
+  decksObject:state
+})
+
+export default connect(mapStateToProps,{
+  getDecksAsync
+})(HomeScreen)
