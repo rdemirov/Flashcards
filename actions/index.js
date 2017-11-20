@@ -21,14 +21,14 @@ export const getDeckAsync = (params) => dispatch => (
 		.then(deck => dispatch(getDeck(deck)))
 );
 
-const storeDeckTitle = (result) => ({
+const storeDeckTitle = (params) => ({
 	type: actionTypes.SAVE_DECK_TITLE,
-	result
+	params
 });
 
 export const saveDeckTitleAsync = (params) => dispatch => (
 	saveDeckTitle(params)
-		.then(result => dispatch(storeDeckTitle(result)))
+		.then(() => dispatch(storeDeckTitle(params)))
 );
 
 const addNewCard = (result) => ({
