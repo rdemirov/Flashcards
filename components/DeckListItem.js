@@ -13,7 +13,7 @@ export default class DeckListItem extends Component {
         this
             .props
             .navigation
-            .navigate('DeckView',{deckId:this.props.deckId})
+            .navigate('DeckView',{deckId:this.props.deckId,title:this.props.deck.title})
     }
 
     render() {
