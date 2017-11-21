@@ -31,14 +31,12 @@ class AddCard extends Component {
         const { deck, navigation } = this.props;
         return (
             <View style={styles.container}>
-                <Text>Enter question</Text>
                 <TextInput
                     style={styles.inputField}
                     placeholder={'question'}
                     onChangeText={this.handleChangeQuestion}
                     value={this.state.question}
                 ></TextInput>
-                <Text>Enter answer</Text>
                 <TextInput
                     style={styles.inputField}
                     placeholder={'answer'}
@@ -60,7 +58,11 @@ const styles = StyleSheet.create({
     inputField: {
         borderWidth: 1,
         borderColor: 'black',
-        width: 250
+        width: 300,
+        height: 50,
+        margin: 20,
+        paddingLeft:20,
+        paddingRight:20
     },
     btn: {
         borderWidth: 1,
