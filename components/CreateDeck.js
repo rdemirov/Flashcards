@@ -25,7 +25,13 @@ class CreateDeck extends Component {
                 <TouchableHighlight
                 underlayColor="white"
                  style={styles.btn}
-                 onPress={()=>(this.props.saveDeckTitleAsync({title:this.state.deckTitle}))}>
+                 onPress={()=>{
+                     const id = Date.now();
+                     this.props.saveDeckTitleAsync({title:this.state.deckTitle,id})
+                     .then((result)=> {
+                        this.props.navigation.navigate('DeckView',{deckId:id})}
+                     )}}
+               >
                    <Text style={styles.buttonText}>Submit</Text> 
                 </TouchableHighlight>
             </View>

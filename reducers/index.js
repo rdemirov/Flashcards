@@ -12,12 +12,12 @@ const reducer = (state = defaultState, action) => {
       else return defaultState
     case actionTypes.SAVE_DECK_TITLE:
       {
-        const { title } = action.params;
+        const { title,id} = action.params;
 
         return {
           decks: {
             ...state.decks,
-            [Date.now()]: {
+            [id]: {
               title,
               questions: []
             }
