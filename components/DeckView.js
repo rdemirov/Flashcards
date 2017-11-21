@@ -21,9 +21,9 @@ class DeckView extends Component {
                 <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard',{id:this.props.deckId}))}>
                     <Text style={[styles.buttonText,{color:'black'}]}>Add card</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={[styles.btn,{marginTop:5}]} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
+              {deck.questions && deck.questions.length>0 &&  <TouchableHighlight style={[styles.btn,{marginTop:5}]} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
                     <Text style={styles.buttonText}>Start quiz</Text>
-                </TouchableHighlight>
+                </TouchableHighlight>}
                 </View>
             </View>
         )
