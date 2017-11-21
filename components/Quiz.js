@@ -16,6 +16,7 @@ export default class Quiz extends Component {
      this.toggleQuestionAnswer=this.toggleQuestionAnswer.bind(this);
      this.markIncorrectAnswer = this.markIncorrectAnswer.bind(this);
      this.markCorrectAnswer = this.markCorrectAnswer.bind(this);
+     this.handleQuestRestart = this.handleQuestRestart.bind(this);
     }
 
     toggleQuestionAnswer() {
@@ -23,6 +24,16 @@ export default class Quiz extends Component {
              ...state,
              showAnswer:!state.showAnswer
          }))
+    }
+
+    handleQuestRestart() {
+        this.setState({
+            currentQuestionIndex: 0,
+            totalQuestions: this.props.navigation.state.params.questions.length,
+            correctCount: 0,
+            showAnswer: false,
+            showResults: false
+        })
     }
 
     markIncorrectAnswer() {
@@ -57,7 +68,7 @@ export default class Quiz extends Component {
                     <View>
                         <Text>{showAnswer ? questions[this.state.currentQuestionIndex].answer : questions[this.state.currentQuestionIndex].question}</Text>
                         <TouchableHighlight onPress={this.toggleQuestionAnswer}>
-                            <Text> {showAnswer ? 'Answer' : 'Question'}</Text>
+                            <Text> {showAnswer ? 'Question' : 'Answer'}</Text>
                         </TouchableHighlight>
                     </View>
                     <View>
@@ -71,6 +82,13 @@ export default class Quiz extends Component {
                 </View>}
                 {showResults && <View>
                     <Text>{`You have ${getPercentage(correctCount,totalQuestions)}% correct answers`}</Text>
+
+                    <TouchableHighlight onPress={this.handleQuestRestart}>
+                            <Text>Start over</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={()=>(this.props.navigation.goBack())}>
+                            <Text>Back to deck view</Text>
+                        </TouchableHighlight>
                 </View>}
             </View>
         )
