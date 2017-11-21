@@ -17,7 +17,7 @@ class CreateDeck extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={{ fontSize: 30, margin: 30,alignItems:'center' }} >What is the title of your new deck?</Text>
+                <Text style={styles.label} >What is the title of your new deck?</Text>
                 <TextInput style={styles.inputField}
                     placeholder={'Enter deck title'}
                     value={this.state.deckTitle}
@@ -78,5 +78,10 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: 'white'
+    },
+    label:{
+        fontSize: 30, 
+        margin: 30,
+        alignItems:'center'
     }
 });
