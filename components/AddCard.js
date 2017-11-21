@@ -24,6 +24,7 @@ class AddCard extends Component {
     addCardToDeck() {
         const card = {question:this.state.question,answer:this.state.answer}
         this.props.addCardToDeckAsync({deckId:this.props.deckId,card})
+        this.setState((state)=>({question:null,answer:null}));
     }
 
     render() {
