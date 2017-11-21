@@ -32,10 +32,17 @@ const reducer = (state = defaultState, action) => {
       }
     }
 
-    case actionTypes.RESET_SELECTED_DECK: {
+    case actionTypes.ADD_CARD_TO_DECK: {
+      const {deckId,card} = action.params;
       return {
-        ...state,
-        selectedDeck:{}
+      decks:{   ...state.decks,
+         [deckId]:{
+                ...state.decks[deckId],
+                questions:[
+                  ...state.decks[deckId].questions,
+                  card
+                ]
+         }}
       }
     }
   }

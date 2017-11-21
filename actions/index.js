@@ -31,12 +31,12 @@ export const saveDeckTitleAsync = (params) => dispatch => (
 		.then(() => dispatch(storeDeckTitle(params)))
 );
 
-const addNewCard = (result) => ({
+const addNewCard = (params) => ({
 	type: actionTypes.ADD_CARD_TO_DECK,
-	result
+	params
 });
 
 export const addCardToDeckAsync = (params) => dispatch => (
 	addCardToDeck(params)
-		.then(result => dispatch(addNewCard(result)))
+		.then(result => dispatch(addNewCard(params)))
 );
