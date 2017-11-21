@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,TouchableHighlight } from 'react-native';
 
 export default class Quiz extends Component {
     render() {
-        const {deck,navigation} = this.props;
+        const {navigation} = this.props;
         return (
             <View >
                <Text>Quiz</Text>

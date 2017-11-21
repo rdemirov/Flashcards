@@ -2,14 +2,37 @@ import React, { Component } from 'react'
 import { StyleSheet, TextInput, Text,View,TouchableHighlight } from 'react-native';
 
 export default class AddCard extends Component {
+   constructor(props) {
+       super(props);
+       this.state={};
+       this.handleChangeQuestion = this.handleChangeQuestion.bind(this);
+       this.handleChangeAnswer = this.handleChangeAnswer.bind(this);
+   }
+
+   handleChangeQuestion(text) {
+       setState({question:text})
+   }
+
+   handleChangeAnswer(text) {
+    setState({answer:text})
+}
     render() {
         const {deck,navigation} = this.props;
         return (
             <View style={styles.container}>
                 <Text>Enter question</Text>
-                <TextInput style={styles.inputField}></TextInput>
+                <TextInput 
+                 style={styles.inputField}
+                 placeholder={'question'}
+                 onChangeText={this.handleChangeQuestion}
+                 value={this.state.question}
+                 ></TextInput>
                 <Text>Enter answer</Text>
-                <TextInput style={styles.inputField}></TextInput>
+                <TextInput 
+                style={styles.inputField}
+                placeholder={'answer'}
+                onChangeText={this.handleChangeAnswer}
+                value={this.state.answer}></TextInput>
                 <TouchableHighlight style={styles.btn}>
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableHighlight>   
@@ -20,7 +43,7 @@ export default class AddCard extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        justifyContent:'center',
+        justifyContent:'space-around',
         alignItems:'center'
     },
     inputField:{
