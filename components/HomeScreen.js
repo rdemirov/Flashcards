@@ -18,7 +18,7 @@ class HomeScreen extends Component {
        contentContainerStyle={styles.container}
        data = {decksArray}
        keyExtractor={(item,index)=>(index)}
-       renderItem={({item}) =><DeckListItem deck={decksObject[item]}{...this.props}/>}
+       renderItem={({item}) =><DeckListItem deck={decksObject[item]} deckId={item}{...this.props}/>}
 
        />
     );
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   });
 
 const mapStateToProps= (state,ownProps) => ({
-  decksObject:state
+  decksObject:state.decks
 })
 
 export default connect(mapStateToProps,{

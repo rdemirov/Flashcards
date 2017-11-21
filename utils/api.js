@@ -11,8 +11,8 @@ export function fetchDecks () {
 
 export function fetchDeck ({deckId}) {
     return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-      .then((decks) => {
-          return JSON.parse(decks)[deckId];
+      .then((deck) => {
+          return JSON.parse(deck)[deckId];
       })
   }
   

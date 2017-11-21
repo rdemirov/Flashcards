@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View,TouchableHighlight } from 'react-native';
-
-export default class DeckView extends Component {
+import {connect} from 'react-redux'
+//import {getDeckAsync,resetSelectedDeck} from '../actions'
+class DeckView extends Component {
     constructor(props) {
         super(props)
         this.handlePress = this.handlePress.bind(this)
@@ -11,15 +12,15 @@ export default class DeckView extends Component {
         this.props.navigation.navigate(component,params);
     }
     render() {
-        const {deck,navigation} = this.props;
+        let {deck,navigation} = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.deckTitle}>{this.props.navigation.state.params.deck.title}</Text>
-                <Text style={styles.cardCount}>{`Cards ${this.props.navigation.state.params.deck.questions.length}`}</Text>
+                <Text style={styles.deckTitle}>{deck.title}</Text>
+                <Text style={styles.cardCount}>{`Cards ${deck.questions.length}`}</Text>
                 <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard'))}>
                     <Text>Add card</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz',{questions:this.props.navigation.state.params.deck.questions}))}>
+                <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
                     <Text style={styles.buttonText}>Start quiz</Text>
                 </TouchableHighlight>
             </View>
@@ -57,3 +58,12 @@ const styles = StyleSheet.create({
         color: 'gray'
     }
   });
+
+
+const mapStateToProps = (state, ownProps) => ({
+    deck:state.decks[ownProps.navigation.state.params.deckId],
+    navigation:ownProps.navigation
+})
+
+
+ export default  connect(mapStateToProps,{})(DeckView)
