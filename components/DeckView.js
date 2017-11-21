@@ -17,12 +17,14 @@ class DeckView extends Component {
             <View style={styles.container}>
                 <Text style={styles.deckTitle}>{deck.title}</Text>
                 <Text style={styles.cardCount}>{`Cards ${deck.questions.length}`}</Text>
+                <View style={styles.buttonContainer}>
                 <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard',{id:this.props.deckId}))}>
                     <Text>Add card</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
+                <TouchableHighlight style={[styles.btn,{marginTop:5}]} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
                     <Text style={styles.buttonText}>Start quiz</Text>
                 </TouchableHighlight>
+                </View>
             </View>
         )
     }
@@ -38,7 +40,9 @@ const styles = StyleSheet.create({
         width:200,
         alignItems:'center',
         justifyContent: 'center',
-        borderRadius:8
+        borderRadius:8,
+        marginTop:30,
+        marginBottom:5
     },
     buttonText: {
         fontSize:20,
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
     container:{
         alignItems:'center',
         justifyContent: 'space-between',
+        marginTop:15
     },
     deckTitle: {
         fontSize: 30,

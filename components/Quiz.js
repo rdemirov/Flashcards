@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
         height:60,
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:8
+        borderRadius:8,
+        margin:5
     },
     buttonText:{
         fontSize:20,
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
     },
     answerButtonsContainer:{
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:20
     }
 });
