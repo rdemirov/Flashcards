@@ -17,7 +17,7 @@ class DeckView extends Component {
             <View style={styles.container}>
                 <Text style={styles.deckTitle}>{deck.title}</Text>
                 <Text style={styles.cardCount}>{`Cards ${deck.questions.length}`}</Text>
-                <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard'))}>
+                <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard',{id:this.props.deckId}))}>
                     <Text>Add card</Text>
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.btn} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => ({
     deck:state.decks[ownProps.navigation.state.params.deckId],
-    navigation:ownProps.navigation
+    navigation:ownProps.navigation,
+    deckId:ownProps.navigation.state.params.deckId
 })
 
 
