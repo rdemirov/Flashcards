@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        height:150
+        height:150,
+        borderBottomColor:'black',
+        borderBottomWidth:1
     },
     deckTitle: {
         fontSize: 30,
