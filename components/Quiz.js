@@ -62,27 +62,26 @@ export default class Quiz extends Component {
         let currentQuestion = this.state.currentQuestionIndex + 1;
         let {correctCount,incorrectCount,showResults} = this.state;
         return (
-            <View >
+            <View>
                 {!showResults && <View>
-                    <Text>{`${currentQuestion}/${totalQuestions}`}</Text>
-                    <View>
-                        <Text>{showAnswer ? questions[this.state.currentQuestionIndex].answer : questions[this.state.currentQuestionIndex].question}</Text>
+                    <Text style={styles.questionIndex}>{`${currentQuestion}/${totalQuestions}`}</Text>
+                    <View style={styles.questionAnswerContainer}>
+                        <Text style={styles.questionAnswerText}>{showAnswer ? questions[this.state.currentQuestionIndex].answer : questions[this.state.currentQuestionIndex].question}</Text>
                         <TouchableHighlight onPress={this.toggleQuestionAnswer}>
-                            <Text> {showAnswer ? 'Question' : 'Answer'}</Text>
+                            <Text style={styles.questionAnswerDisplay}> {showAnswer ? 'Question' : 'Answer'}</Text>
                         </TouchableHighlight>
                     </View>
-                    <View>
-                        <TouchableHighlight onPress={this.markCorrectAnswer}>
-                            <Text>Correct</Text>
+                    <View style={styles.answerButtonsContainer}>
+                        <TouchableHighlight onPress={this.markCorrectAnswer} style={[styles.button,{backgroundColor:'green'}]} >
+                            <Text style={styles.buttonText}>Correct</Text>
                         </TouchableHighlight>
-                        <TouchableHighlight onPress={this.markIncorrectAnswer}>
-                            <Text>Incorrect</Text>
+                        <TouchableHighlight onPress={this.markIncorrectAnswer} style={[styles.button,{backgroundColor:'red'}]}>
+                            <Text style={styles.buttonText}>Incorrect</Text>
                         </TouchableHighlight>
                     </View>
                 </View>}
                 {showResults && <View>
                     <Text>{`You have ${getPercentage(correctCount,totalQuestions)}% correct answers`}</Text>
-
                     <TouchableHighlight onPress={this.handleQuestRestart}>
                             <Text>Start over</Text>
                         </TouchableHighlight>
@@ -94,3 +93,40 @@ export default class Quiz extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    questionAnswerContainer:{
+       justifyContent:'center',
+       alignItems:'center'
+    },
+    questionAnswerDisplay: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'red'
+    },
+    questionAnswerText:{
+     fontSize:40,
+     fontWeight:'bold'
+    },
+    questionIndex:{
+        justifyContent:'flex-start',
+        alignItems:'flex-start',
+        fontSize:20
+    },
+    button:{
+        width:200,
+        height:60,
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:8
+    },
+    buttonText:{
+        fontSize:20,
+        fontWeight:'bold',
+        color:'white'
+    },
+    answerButtonsContainer:{
+        justifyContent:'center',
+        alignItems:'center'
+    }
+});
