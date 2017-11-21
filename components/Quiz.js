@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
+import {getPercentage} from '../utils/helpers'
+
 export default class Quiz extends Component {
     constructor(props) {
         super(props);
@@ -12,6 +14,8 @@ export default class Quiz extends Component {
             showResults: false
         }
      this.toggleQuestionAnswer=this.toggleQuestionAnswer.bind(this);
+     this.markIncorrectAnswer = this.markIncorrectAnswer.bind(this);
+     this.markCorrectAnswer = this.markCorrectAnswer.bind(this);
     }
 
     toggleQuestionAnswer() {
@@ -21,16 +25,35 @@ export default class Quiz extends Component {
          }))
     }
 
+    markIncorrectAnswer() {
+        this.setState((state)=> {
+           return {...state,
+            currentQuestionIndex:state.currentQuestionIndex+1,
+            showResults:(state.totalQuestions<=(state.currentQuestionIndex+1))
+        }
+        })
+    }
+
+    markCorrectAnswer() {
+        this.setState((state)=> {
+            return {...state,
+             currentQuestionIndex:state.currentQuestionIndex+1,
+             correctCount:state.correctCount+1,
+             showResults:(state.totalQuestions<=(state.currentQuestionIndex+1))
+         }
+         })
+    }
+
     render() {
         const { questions } = this.props.navigation.state.params;
         const totalQuestions = this.state.totalQuestions;
         const showAnswer = this.state.showAnswer;
-        let questionIndex = this.state.currentQuestionIndex + 1;
+        let currentQuestion = this.state.currentQuestionIndex + 1;
         let {correctCount,incorrectCount,showResults} = this.state;
         return (
             <View >
-                <Text>{`${questionIndex}/${totalQuestions}`}</Text>
                 {!showResults && <View>
+                    <Text>{`${currentQuestion}/${totalQuestions}`}</Text>
                     <View>
                         <Text>{showAnswer ? questions[this.state.currentQuestionIndex].answer : questions[this.state.currentQuestionIndex].question}</Text>
                         <TouchableHighlight onPress={this.toggleQuestionAnswer}>
@@ -38,16 +61,16 @@ export default class Quiz extends Component {
                         </TouchableHighlight>
                     </View>
                     <View>
-                        <TouchableHighlight>
+                        <TouchableHighlight onPress={this.markCorrectAnswer}>
                             <Text>Correct</Text>
                         </TouchableHighlight>
-                        <TouchableHighlight>
+                        <TouchableHighlight onPress={this.markIncorrectAnswer}>
                             <Text>Incorrect</Text>
                         </TouchableHighlight>
                     </View>
                 </View>}
                 {showResults && <View>
-                    <Text>{`You have ${(correctCount*100)/totalQuestions}% correct answers`}</Text>
+                    <Text>{`You have ${getPercentage(correctCount,totalQuestions)}% correct answers`}</Text>
                 </View>}
             </View>
         )
