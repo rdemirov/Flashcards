@@ -19,7 +19,7 @@ class DeckView extends Component {
                 <Text style={styles.cardCount}>{`Cards ${deck.questions.length}`}</Text>
                 <View style={styles.buttonContainer}>
                 <TouchableHighlight style={[styles.btn,{backgroundColor:'white'}]} onPress={()=>(this.handlePress('AddCard',{id:this.props.deckId}))}>
-                    <Text>Add card</Text>
+                    <Text style={[styles.buttonText,{color:'black'}]}>Add card</Text>
                 </TouchableHighlight>
                 <TouchableHighlight style={[styles.btn,{marginTop:5}]} onPress={()=>(this.handlePress('Quiz',{questions:deck.questions}))}>
                     <Text style={styles.buttonText}>Start quiz</Text>

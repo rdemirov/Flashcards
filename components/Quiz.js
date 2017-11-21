@@ -65,7 +65,7 @@ export default class Quiz extends Component {
             <View>
                 {!showResults && <View>
                     <Text style={styles.questionIndex}>{`${currentQuestion}/${totalQuestions}`}</Text>
-                    <View style={styles.questionAnswerContainer}>
+                    <View style={styles.container}>
                         <Text style={styles.questionAnswerText}>{showAnswer ? questions[this.state.currentQuestionIndex].answer : questions[this.state.currentQuestionIndex].question}</Text>
                         <TouchableHighlight onPress={this.toggleQuestionAnswer}>
                             <Text style={styles.questionAnswerDisplay}> {showAnswer ? 'Question' : 'Answer'}</Text>
@@ -80,13 +80,13 @@ export default class Quiz extends Component {
                         </TouchableHighlight>
                     </View>
                 </View>}
-                {showResults && <View>
-                    <Text>{`You have ${getPercentage(correctCount,totalQuestions)}% correct answers`}</Text>
-                    <TouchableHighlight onPress={this.handleQuestRestart}>
-                            <Text>Start over</Text>
+                {showResults && <View style={styles.container}>
+                    <Text style={styles.resultDisplay}>{`You have ${getPercentage(correctCount,totalQuestions)}% correct answers`}</Text>
+                    <TouchableHighlight style={styles.button} onPress={this.handleQuestRestart}>
+                            <Text style={[styles.buttonText,{color:'black'}]}>Start over</Text>
                         </TouchableHighlight>
-                        <TouchableHighlight onPress={()=>(this.props.navigation.goBack())}>
-                            <Text>Back to deck view</Text>
+                        <TouchableHighlight style={[styles.button,{backgroundColor:'black'}]} onPress={()=>(this.props.navigation.goBack())}>
+                            <Text style={styles.buttonText}>Back to deck view</Text>
                         </TouchableHighlight>
                 </View>}
             </View>
@@ -95,7 +95,7 @@ export default class Quiz extends Component {
 }
 
 const styles = StyleSheet.create({
-    questionAnswerContainer:{
+    container:{
        justifyContent:'center',
        alignItems:'center'
     },
@@ -119,16 +119,22 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         borderRadius:8,
+        borderWidth:1,
+        borderColor:'black',
         margin:5
     },
     buttonText:{
         fontSize:20,
-        fontWeight:'bold',
         color:'white'
     },
     answerButtonsContainer:{
         justifyContent:'center',
         alignItems:'center',
         marginTop:20
+    },
+    resultDisplay:{
+        fontSize:30,
+        marginTop:15,
+        marginBottom:30
     }
 });
