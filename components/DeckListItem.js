@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
 
 DeckListItem.propTypes = {
     deck: PropTypes.object,
-    deckId: PropTypes.string,
+    deckId: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
     navigation: PropTypes.object
 }

@@ -87,7 +87,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 AddCard.propTypes ={
-    deckId: PropTypes.string,
+    deckId: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
     navigation: PropTypes.object,
     addCardToDeckAsync: PropTypes.func
 }

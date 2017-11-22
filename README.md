@@ -88,6 +88,12 @@ In case the deck does not contain questions,only the Add card button is displaye
 
 ### Add a new card
 
+![addCard](./assets/images/addCard.PNG)
+
+On this screen the user can enter question and answer to add to the deck.
+The new question is saved with the Submit button.
+After save, the text fields are cleared,enabling the user to add additional questions.
+After the user is finished adding questions,he can go back to the individual deck view by pressing the back button.
 
 ### Quiz
 

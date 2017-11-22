@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
         width: 300,
         height: 50,
         margin: 30,
-        paddingLeft:20,
-        paddingRight:20
+        paddingLeft: 20,
+        paddingRight: 20
     },
     btn: {
         borderWidth: 1,
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white'
     },
-    label:{
-        fontSize: 30, 
+    label: {
+        fontSize: 30,
         margin: 30,
-        alignItems:'center'
+        alignItems: 'center'
     }
 });
 
