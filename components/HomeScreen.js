@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View,FlatList } from 'react-native';
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 import {getDecksAsync} from '../actions'
 import DeckListItem from './DeckListItem'
 
@@ -41,6 +42,11 @@ const styles = StyleSheet.create({
         color:'gray'
     }
   });
+
+HomeScreen.propTypes = {
+  decksObject: PropTypes.object,
+  getDecksAsync: PropTypes.func
+}
 
 const mapStateToProps= (state,ownProps) => ({
   decksObject:state.decks

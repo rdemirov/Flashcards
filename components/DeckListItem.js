@@ -1,30 +1,32 @@
-import React, {Component} from 'react'
-import {StyleSheet, Text, FlatList, TouchableOpacity, View} from 'react-native';
+import React, { Component } from 'react'
+import {
+    StyleSheet,
+    Text,
+    FlatList,
+    TouchableOpacity,
+    View
+} from 'react-native';
+import PropTypes from 'prop-types'
 
 export default class DeckListItem extends Component {
     constructor(props) {
         super(props);
-        this.handleNavigation = this
-            .handleNavigation
-            .bind(this);
+        this.handleNavigation = this.handleNavigation.bind(this);
     }
 
     handleNavigation() {
-        this
-            .props
-            .navigation
-            .navigate('DeckView',{deckId:this.props.deckId,title:this.props.deck.title})
+        this.props.navigation.navigate('DeckView', { deckId: this.props.deckId, title: this.props.deck.title })
     }
 
     render() {
-        const {deck, navigation} = this.props;
+        const { deck, navigation } = this.props;
         return (
             <TouchableOpacity onPress={this.handleNavigation} >
-                <View  style={styles.deck} >
+                <View style={styles.deck} >
                     <Text style={styles.deckTitle}>{deck.title}</Text>
                     <Text style={styles.cardCount}>{`${deck.questions.length} Cards`}</Text>
                 </View>
-                </TouchableOpacity>
+            </TouchableOpacity>
 
         )
     }
@@ -35,9 +37,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        height:150,
-        borderBottomColor:'black',
-        borderBottomWidth:1
+        height: 150,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1
     },
     deckTitle: {
         fontSize: 30,
@@ -49,3 +51,9 @@ const styles = StyleSheet.create({
         color: 'gray'
     }
 });
+
+DeckListItem.propTypes = {
+    deck: PropTypes.object,
+    deckId: PropTypes.string,
+    navigation: PropTypes.object
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View,TouchableHighlight } from 'react-native';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-//import {getDeckAsync,resetSelectedDeck} from '../actions'
 class DeckView extends Component {
     constructor(props) {
         super(props)
@@ -64,11 +64,17 @@ const styles = StyleSheet.create({
     }
   });
 
-
-const mapStateToProps = (state, ownProps) => ({
+  DeckView.propTypes = {
     deck:state.decks[ownProps.navigation.state.params.deckId],
     navigation:ownProps.navigation,
     deckId:ownProps.navigation.state.params.deckId
+  }
+
+
+const mapStateToProps = (state, ownProps) => ({
+    deck: PropTypes.object,
+    deckId: PropTypes.string,
+    navigation: PropTypes.object
 })
 
 

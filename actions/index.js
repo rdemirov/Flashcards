@@ -11,16 +11,6 @@ export const getDecksAsync = (params) => dispatch => (
 		.then(decks => dispatch(getDecks(decks)))
 );
 
-const getDeck = (deck) => ({
-	type: actionTypes.GET_DECK,
-	deck
-});
-
-export const getDeckAsync = (params) => dispatch => (
-	fetchDeck(params)
-		.then(deck => dispatch(getDeck(deck)))
-);
-
 const storeDeckTitle = (params) => ({
 	type: actionTypes.SAVE_DECK_TITLE,
 	params

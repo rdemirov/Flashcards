@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TextInput, Text, View, TouchableHighlight } from 'react-native';
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 import {addCardToDeckAsync} from '../actions'
 
 class AddCard extends Component {
@@ -84,6 +85,12 @@ const mapStateToProps = (state, ownProps) => ({
     deckId:ownProps.navigation.state.params.id,
     navigation:ownProps.navigation
 })
+
+AddCard.propTypes ={
+    deckId: PropTypes.string,
+    navigation: PropTypes.object,
+    addCardToDeckAsync: PropTypes.func
+}
 
 
 export default connect(mapStateToProps, {

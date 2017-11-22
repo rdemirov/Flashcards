@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
 import { saveDeckTitleAsync } from '../actions'
 class CreateDeck extends Component {
@@ -85,3 +86,9 @@ const styles = StyleSheet.create({
         alignItems:'center'
     }
 });
+
+
+CreateDeck.propTypes = {
+    saveDeckTitleAsync: PropTypes.func,
+    navigation: PropTypes.object
+}

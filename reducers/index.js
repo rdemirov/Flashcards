@@ -25,13 +25,6 @@ const reducer = (state = defaultState, action) => {
           selectedDeck:{...state.selectedDeck}
         }
       }
-    case actionTypes.GET_DECK: {
-      return {
-        ...state,
-        selectedDeck:action.deck
-      }
-    }
-
     case actionTypes.ADD_CARD_TO_DECK: {
       const {deckId,card} = action.params;
       return {
