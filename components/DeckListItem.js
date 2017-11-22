@@ -18,14 +18,6 @@ export default class DeckListItem extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log('Did mount')
-    }
-
-    componentWillReceiveProps(nextProps) {
-       console.log('Receive props')
-    }
-
     handleNavigation() {
         Animated.timing(this.state.opacity, { toValue: 0, duration: 500 })
             .start(() => (
