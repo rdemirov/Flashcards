@@ -36,10 +36,8 @@ class CreateDeck extends Component {
                         onPress={() => {
                             const id = Date.now();
                             this.props.saveDeckTitleAsync({ title: this.state.deckTitle, id })
-                                .then((result) => {
-                                    this.props.navigation.navigate('DeckView', { deckId: id })
-                                }
-                                )
+                                .then((result) => (  this.setState({deckTitle:null})))
+                                .then(()=> (  this.props.navigation.navigate('DeckView', { deckId: id })))
                         }}
                     >
                         <Text style={styles.buttonText}>Submit</Text>
