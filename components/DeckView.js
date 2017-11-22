@@ -65,16 +65,17 @@ const styles = StyleSheet.create({
   });
 
   DeckView.propTypes = {
-    deck:state.decks[ownProps.navigation.state.params.deckId],
-    navigation:ownProps.navigation,
-    deckId:ownProps.navigation.state.params.deckId
+    deck: PropTypes.object,
+    deckId: PropTypes.string,
+    navigation: PropTypes.object
+  
   }
 
 
 const mapStateToProps = (state, ownProps) => ({
-    deck: PropTypes.object,
-    deckId: PropTypes.string,
-    navigation: PropTypes.object
+    deck:state.decks[ownProps.navigation.state.params.deckId],
+    navigation:ownProps.navigation,
+    deckId:ownProps.navigation.state.params.deckId
 })
 
 

@@ -4,6 +4,7 @@ import {
     Text,
     FlatList,
     TouchableOpacity,
+    Animated,
     View
 } from 'react-native';
 import PropTypes from 'prop-types'
@@ -12,21 +13,38 @@ export default class DeckListItem extends Component {
     constructor(props) {
         super(props);
         this.handleNavigation = this.handleNavigation.bind(this);
+        this.state = {
+            opacity: new Animated.Value(1)
+        }
+    }
+
+    componentDidMount() {
+        console.log('Did mount')
+    }
+
+    componentWillReceiveProps(nextProps) {
+       console.log('Receive props')
     }
 
     handleNavigation() {
-        this.props.navigation.navigate('DeckView', { deckId: this.props.deckId, title: this.props.deck.title })
+        Animated.timing(this.state.opacity, { toValue: 0, duration: 500 })
+            .start(() => (
+                Animated.timing(this.state.opacity, { toValue: 1, duration: 500 })
+                .start(() => (this.props.navigation.navigate('DeckView', { deckId: this.props.deckId, title: this.props.deck.title })))));
     }
 
     render() {
-        const { deck, navigation } = this.props;
+        const { deck, navigation, deckId } = this.props;
+        let { opacity } = this.state;
         return (
-            <TouchableOpacity onPress={this.handleNavigation} >
-                <View style={styles.deck} >
-                    <Text style={styles.deckTitle}>{deck.title}</Text>
-                    <Text style={styles.cardCount}>{`${deck.questions.length} Cards`}</Text>
-                </View>
-            </TouchableOpacity>
+            <Animated.View key={deckId} style={{ opacity: opacity }}>
+                <TouchableOpacity onPress={this.handleNavigation} >
+                    <View style={styles.deck} >
+                        <Text style={styles.deckTitle}>{deck.title}</Text>
+                        <Text style={styles.cardCount}>{`${deck.questions.length} Cards`}</Text>
+                    </View>
+                </TouchableOpacity>
+            </Animated.View>
 
         )
     }
