@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableHighlight
+} from 'react-native';
 import { saveDeckTitleAsync } from '../actions'
 class CreateDeck extends Component {
 
